@@ -1,0 +1,30 @@
+<launch>
+  <param name="robot_description" textfile="$(find oslsim)/urdf/oslsim.urdf" />  
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="worlds/empty.world"/>
+    <arg name="paused" value="true"/>    
+  </include>
+  
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-urdf -model oslsim -z 0.875 -param robot_description" />
+
+  <rosparam file="$(find oslsim)/config/joints.yaml" command="load"/>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+    respawn="false" output="screen">
+    <param name="publish_frequency" type="double" value="50.0" />
+    <param name="ignore_timestamp" type="bool" value="true" />
+    <param name="tf_prefix" type="string" value="oslsim" />    
+    <remap from="/joint_states" to="/oslsim/joint_states" />
+  </node>
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" ns="/oslsim" args="joint_state_controller hipL_position_controller hipR_position_controller kneeL_position_controller kneeR_position_controller ankleL_position_controller ankleR_position_controller"/>
+
+  <!-- call with walk:=true to start walking -->
+  <arg name="walk" default="false" />
+  <group if="$(arg walk)">
+    <node name="oslsim_walker" pkg="oslsim" type="walk.py" />
+  </group>    
+
+</launch>

@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot
+  name="oslsim">
+  <link name="root"/>
+  
+  <joint name="root_joint" type="fixed">
+    <parent link="root"/>
+    <child link="body"/>
+  </joint>  
+
+  <link name="body">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.001" />
+      <inertia
+        ixx="0.01"
+        ixy="0"
+        ixz="0"
+        iyy="0.01"
+        iyz="0"
+        izz="0.01" />
+    </inertial>
+  </link>
+  
+  <link
+    name="thighL">
+    <inertial>
+      <origin
+        xyz="0.0079 0.105 -0.18514"
+        rpy="1.5708 0 0" />
+      <mass
+        value="5.5797" />
+      <inertia
+        ixx="0.0451"
+        ixy="-0.0023863"
+        ixz="0.00041503"
+        iyy="0.017843"
+        iyz="-0.00079008"
+        izz="0.046937" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://oslsim/meshes/thighL.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://oslsim/meshes/thighLCollider.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link
+    name="thighR">
+    <inertial>
+      <origin
+        xyz="0.0149 -0.105 -0.18907"
+        rpy="1.5708 0 0" />
+      <mass
+        value="5.5993" />
+      <inertia
+        ixx="0.045555"
+        ixy="-0.0028683"
+        ixz="-0.00027507"
+        iyy="0.018107"
+        iyz="0.0020012"
+        izz="0.04735" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://oslsim/meshes/thighR.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://oslsim/meshes/thighRCollider.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="hipR" type="revolute">
+    <parent link="body"/>
+    <child link="thighR"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <dynamics damping="1.0" friction="1.0"/>
+    <limit effort="1000.0" velocity="50" lower="-1.57" upper="1.57" />
+  </joint>
+
+  <transmission name="hipR_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="hipR">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="hipR_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>100</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <joint name="hipL" type="revolute">
+    <parent link="body"/>
+    <child link="thighL"/>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <dynamics damping="1.0" friction="1.0"/>
+    <limit effort="1000.0" velocity="50" lower="-1.57" upper="1.57" />
+  </joint>
+
+  <transmission name="hipL_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="hipL">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="hipL_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>100</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <link
+    name="pylonR">
+    <inertial>
+      <origin
+        xyz="0.00071137 -0.14671 0.059447"
+        rpy="0 0 0" />
+      <mass
+        value="0.9365" />
+      <inertia
+        ixx="0.00092446"
+        ixy="-1.5017E-05"
+        ixz="2.9586E-06"
+        iyy="0.00064852"
+        iyz="-1.2701E-05"
+        izz="0.0013496" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://oslsim/meshes/pylonRCollider.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://oslsim/meshes/pylonRCollider.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="kneeR" type="revolute">
+    <origin
+      xyz="-0.0073766 -0.062441 -0.4427"
+      rpy="1.5708 0 0" />
+    <parent
+      link="thighR" />
+    <child
+      link="pylonR" />
+    <axis
+      xyz="0 0 1" />
+    <dynamics damping="1.0" friction="1.0"/>
+    <limit effort="1000.0" velocity="50" lower="-1.57" upper="1.57" />
+  </joint>
+
+  <transmission name="kneeR_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="kneeR">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="kneeR_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>100</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <link
+    name="footR">
+    <inertial>
+      <origin
+        xyz="0.029606 0.056108 0.013102"
+        rpy="0 0 0" />
+      <mass
+        value="0.19826" />
+      <inertia
+        ixx="0.00051564"
+        ixy="-2.531E-06"
+        ixz="-1.6019E-06"
+        iyy="0.0004945"
+        iyz="-0.0001344"
+        izz="0.0001125" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://oslsim/meshes/footR.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://oslsim/meshes/footRCollider.STL" />
+      </geometry>
+      <surface>
+        <friction>
+          <ode>
+            <mu>1.0</mu>
+            <mu2>0.25</mu2>
+            <fdir1>1 0 0</fdir1>
+            <slip1>0</slip1>
+            <slip2>0</slip2>
+          </ode>
+          <torsional>
+            <coefficient>0.0</coefficient>
+            <patch_radius>0</patch_radius>
+            <surface_radius>0</surface_radius>
+            <use_patch_radius>1</use_patch_radius>
+            <ode>
+              <slip>0</slip>
+            </ode>
+          </torsional>
+        </friction>
+        <bounce>
+          <restitution_coefficient>0</restitution_coefficient>
+          <threshold>1e+06</threshold>
+        </bounce>
+        <contact>
+          <collide_without_contact>0</collide_without_contact>
+          <collide_without_contact_bitmask>0</collide_without_contact_bitmask>
+          <collide_bitmask>0</collide_bitmask>
+          <ode>
+            <max_vel>0.1</max_vel>
+            <soft_cfm>0.8</soft_cfm>
+            <soft_erp>0.8</soft_erp>
+            <kd>2500</kd>
+            <kp>10</kp>
+            <min_depth>0.001</min_depth>
+          </ode>
+          <bullet>
+            <split_impulse>1</split_impulse>
+            <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+            <soft_cfm>0</soft_cfm>
+            <soft_erp>0.2</soft_erp>
+            <kp>1e+13</kp>
+            <kd>1</kd>
+          </bullet>
+        </contact>     
+      </surface>
+    </collision>
+  </link>
+  <joint
+    name="ankleR"
+    type="revolute">
+    <origin
+      xyz="-0.00077967 -0.3134 0.026811"
+      rpy="-3.1416 -1.5708 0" />
+    <parent
+      link="pylonR" />
+    <child
+      link="footR" />
+    <axis
+      xyz="1 0 0" />
+    <dynamics damping="1.0" friction="1.0"/>
+    <limit effort="1000.0" velocity="50" lower="-1.57" upper="1.57" />      
+  </joint>
+
+  <transmission name="ankleR_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="ankleR">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="ankleR_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>100</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <link
+    name="pylonL">
+    <inertial>
+      <origin
+        xyz="0.00071104 -0.14671 -0.059447"
+        rpy="0 0 0" />
+      <mass
+        value="0.93649" />
+      <inertia
+        ixx="0.00092445"
+        ixy="-1.5017E-05"
+        ixz="-2.9597E-06"
+        iyy="0.00064852"
+        iyz="1.2705E-05"
+        izz="0.0013496" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://oslsim/meshes/pylonLCollider.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://oslsim/meshes/pylonLCollider.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="kneeL"
+    type="revolute">
+    <origin
+      xyz="-0.0073766 0.057865 -0.4427"
+      rpy="1.5708 0 0" />
+    <parent
+      link="thighL" />
+    <child
+      link="pylonL" />
+    <axis
+      xyz="0 0 1" />
+    <dynamics damping="1.0" friction="1.0"/>
+    <limit effort="1000.0" velocity="50" lower="-1.57" upper="1.57" />      
+  </joint>
+
+  <transmission name="kneeL_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="kneeL">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="kneeL_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>100</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <link
+    name="footL">
+    <inertial>
+      <origin
+        xyz="0.029606 -0.056108 0.013102"
+        rpy="0 0 0" />
+      <mass
+        value="0.19826" />
+      <inertia
+        ixx="0.00051563"
+        ixy="2.5317E-06"
+        ixz="-1.6036E-06"
+        iyy="0.00049449"
+        iyz="0.0001344"
+        izz="0.0001125" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://oslsim/meshes/footL.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://oslsim/meshes/footLCollider.STL" />
+      </geometry>
+      <surface>
+        <friction>
+          <ode>
+            <mu>1.0</mu>
+            <mu2>0.25</mu2>
+            <fdir1>1 0 0</fdir1>
+            <slip1>0</slip1>
+            <slip2>0</slip2>
+          </ode>
+          <torsional>
+            <coefficient>0.0</coefficient>
+            <patch_radius>0</patch_radius>
+            <surface_radius>0</surface_radius>
+            <use_patch_radius>1</use_patch_radius>
+            <ode>
+              <slip>0</slip>
+            </ode>
+          </torsional>
+        </friction>
+        <bounce>
+          <restitution_coefficient>0</restitution_coefficient>
+          <threshold>1e+06</threshold>
+        </bounce>
+        <contact>
+          <collide_without_contact>0</collide_without_contact>
+          <collide_without_contact_bitmask>0</collide_without_contact_bitmask>
+          <collide_bitmask>0</collide_bitmask>
+          <ode>
+            <max_vel>0.1</max_vel>
+            <soft_cfm>0.8</soft_cfm>
+            <soft_erp>0.8</soft_erp>
+            <kd>2500</kd>
+            <kp>10</kp>
+            <min_depth>0.001</min_depth>
+          </ode>
+          <bullet>
+            <split_impulse>1</split_impulse>
+            <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+            <soft_cfm>0</soft_cfm>
+            <soft_erp>0.2</soft_erp>
+            <kp>1e+13</kp>
+            <kd>1</kd>
+          </bullet>
+        </contact>     
+      </surface>
+    </collision>
+  </link>
+  <joint
+    name="ankleL"
+    type="revolute">
+    <origin
+      xyz="-0.00077967 -0.3134 -0.026811"
+      rpy="0 1.5708 0" />
+    <parent
+      link="pylonL" />
+    <child
+      link="footL" />
+    <axis
+      xyz="1 0 0" />
+    <dynamics damping="1.0" friction="1.0"/>      
+    <limit effort="1000.0" velocity="50" lower="-1.57" upper="1.57" />      
+  </joint>
+
+  <transmission name="ankleL_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="ankleL">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="ankleL_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>100</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/oslsim</robotNamespace>
+    </plugin>
+  </gazebo>
+
+</robot>
