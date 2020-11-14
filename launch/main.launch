@@ -2,7 +2,7 @@
   <param name="robot_description" textfile="$(find oslsim)/urdf/oslsim.urdf" />  
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="worlds/empty.world"/>
+    <arg name="world_name" value="$(find oslsim)/worlds/main.world"/>
     <arg name="paused" value="true"/>    
   </include>
   

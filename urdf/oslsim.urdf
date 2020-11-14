@@ -47,7 +47,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://oslsim/meshes/thighL.STL" />
+          filename="package://oslsim/meshes/thighL.dae" />
       </geometry>
       <material
         name="">
@@ -88,7 +88,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://oslsim/meshes/thighR.STL" />
+          filename="package://oslsim/meshes/thighR.dae" />
       </geometry>
       <material
         name="">
@@ -169,7 +169,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://oslsim/meshes/pylonRCollider.STL" />
+          filename="package://oslsim/meshes/pylonR.dae" />
       </geometry>
       <material
         name="">
@@ -235,7 +235,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://oslsim/meshes/footR.STL" />
+          filename="package://oslsim/meshes/footR.dae" />
       </geometry>
       <material
         name="">
@@ -347,7 +347,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://oslsim/meshes/pylonLCollider.STL" />
+          filename="package://oslsim/meshes/pylonL.dae" />
       </geometry>
       <material
         name="">
@@ -414,7 +414,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://oslsim/meshes/footL.STL" />
+          filename="package://oslsim/meshes/footL.dae" />
       </geometry>
       <material
         name="">
