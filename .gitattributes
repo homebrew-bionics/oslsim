@@ -1,0 +1,2 @@
+meshes/pylonL.dae filter=lfs diff=lfs merge=lfs -text
+meshes/pylonR.dae filter=lfs diff=lfs merge=lfs -text
