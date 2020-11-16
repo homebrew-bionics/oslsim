@@ -1,14 +1,14 @@
 # oslsim
 
-A ROS package for the simulation of Open-source leg (OSL). 
+[![OSL](https://img.shields.io/badge/UMich-OSL-yellow)](https://opensourceleg.com/)
+[![ROS](https://img.shields.io/badge/ROS-Melodic-blue)](http://wiki.ros.org/melodic)
+[![License](https://img.shields.io/github/license/homebrew-bionics/oslsim)](https://github.com/homebrew-bionics/oslsim/blob/master/LICENSE.md)
 
-OSL was proposed by the ``Neurobionics Lab at UM`` to unify the research field of prosthetic leg controls. OSL is a robust and relatively inexpensive system that can be easily manufactured, assembled, and controlled. OSL is licensed under a [Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/deed.en_US).
-
-To know more, visit https://opensourceleg.com/
+A ROS package that provides the necessary interfaces to simulate the Open-source leg (OSL) proposed by the **Neurobionics Lab at UM** to unify the research field of prosthetic leg controls. OSL is a robust and relatively inexpensive system that can be easily manufactured, assembled, and controlled. OSL is licensed under a [Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/deed.en_US).
 
 ![oslsim](./oslsim.jpg)
 
-Developed and tested with ``ROS-Melodic`` and ``Ubuntu 18.04``.
+To know more, visit https://opensourceleg.com/
 
 ## Getting Started
 ```
