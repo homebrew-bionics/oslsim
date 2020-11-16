@@ -6,7 +6,7 @@
             <shadows>0</shadows>
         </scene>
         <physics type="ode">
-            <gravity>0.000000 -1.000000 -10.000000</gravity>
+            <gravity>0.000000 0.00000 -9.810000</gravity>
             <ode>
                 <solver>
                     <type>quick</type>
@@ -38,8 +38,8 @@
                     <surface>
                         <friction>
                             <ode>
-                                <mu>50.000000</mu>
-                                <mu2>50.000000</mu2>
+                                <mu>0.500000</mu>
+                                <mu2>0.500000</mu2>
                                 <fdir1>0.000000 0.000000 0.000000</fdir1>
                                 <slip1>0.000000</slip1>
                                 <slip2>0.000000</slip2>
