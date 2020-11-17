@@ -14,18 +14,18 @@ class JointCmds:
 
         # A sinusoidal waveform as a placeholder #
         # -------------------------------------- #
-
-        a = 0.3*np.pi
-        b = 2*np.pi
-        c = 0*np.pi
-
-        num_segments = 3
-        gamma=-c/num_segments
-        beta=b/num_segments
-        alpha=a*np.abs(np.sin(beta/2))
-
-        for i, jnt in enumerate(self.joints_list):
-            self.jnt_cmd_dict[jnt] = alpha*np.sin(2*self.t*np.pi+(i%3)*beta)+gamma
+        ampT=20*np.pi*(1./180)
+        ampS=35*np.pi*(1./180)
+        offsetS=-25*np.pi*(1./180)
+        phaseLS=-np.pi/2
+        phaseRS=-np.pi/2-1.12
+        k=4
+        self.jnt_cmd_dict['ankleL']=0.0
+        self.jnt_cmd_dict['ankleR']=0.0
+        self.jnt_cmd_dict['hipR']=ampT*np.sin(self.t*k)
+        self.jnt_cmd_dict['hipL']=-ampT*np.sin(self.t*k)
+        self.jnt_cmd_dict['kneeL']=ampS*np.sin((self.t*k)+phaseLS)+offsetS
+        self.jnt_cmd_dict['kneeR']=ampS*np.sin((self.t*k)+phaseRS)+offsetS
 
         # -------------------------------------- #
 
