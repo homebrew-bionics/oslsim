@@ -6,7 +6,10 @@
             <shadows>0</shadows>
         </scene>
         <physics type="ode">
-            <gravity>0.000000 0.00000 -9.810000</gravity>
+            <gravity>0.000000 0.00000 -0.5</gravity>
+            <max_step_size>0.01</max_step_size>
+            <real_time_factor>1</real_time_factor>
+            <real_time_update_rate>100</real_time_update_rate>            
             <ode>
                 <solver>
                     <type>quick</type>
