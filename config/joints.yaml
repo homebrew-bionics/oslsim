@@ -6,30 +6,30 @@ oslsim:
   hipL_position_controller:
     type: effort_controllers/JointPositionController
     joint: hipL
-    pid: {p: 100.0, i: 0.0, d: 0.0}
+    pid: {p: 1.0, i: 0.0, d: 0.0}
 
   hipR_position_controller:
     type: effort_controllers/JointPositionController
     joint: hipR
-    pid: {p: 100.0, i: 0.0, d: 0.0}
+    pid: {p: 1.0, i: 0.0, d: 0.0}
 
   kneeL_position_controller:
     type: effort_controllers/JointPositionController
     joint: kneeL
-    pid: {p: 100.0, i: 0.0, d: 0.0}
+    pid: {p: 1.0, i: 0.0, d: 0.0}
 
   kneeR_position_controller:
     type: effort_controllers/JointPositionController
     joint: kneeR
-    pid: {p: 100.0, i: 0.0, d: 0.0}
+    pid: {p: 1.0, i: 0.0, d: 0.0}
 
   ankleL_position_controller:
     type: effort_controllers/JointPositionController
     joint: ankleL
-    pid: {p: 100.0, i: 0.0, d: 0.0}
+    pid: {p: 1.0, i: 0.0, d: 0.0}
 
   ankleR_position_controller:
     type: effort_controllers/JointPositionController
     joint: ankleR
-    pid: {p: 100.0, i: 0.0, d: 0.0}
+    pid: {p: 1.0, i: 0.0, d: 0.0}
 

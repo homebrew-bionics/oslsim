@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<robot
-  name="oslsim">
+<robot name="oslsim">
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/oslsim</robotNamespace>
+    </plugin>
+  </gazebo>
+
   <link name="root"/>
   
   <joint name="root_joint" type="fixed">
@@ -25,8 +30,14 @@
     </inertial>
   </link>
   
-  <link
-    name="thighL">
+  <gazebo reference="body">
+      <kp>1000.0</kp>
+      <kd>1000.0</kd>
+      <mu1>0.5</mu1>
+      <mu2>0.5</mu2>
+  </gazebo>
+
+  <link name="thighL">
     <inertial>
       <origin
         xyz="0.0079 0.105 -0.18514"
@@ -66,8 +77,14 @@
     </collision>
   </link>
 
-  <link
-    name="thighR">
+  <gazebo reference="thighL">
+      <kp>1000.0</kp>
+      <kd>1000.0</kd>
+      <mu1>0.5</mu1>
+      <mu2>0.5</mu2>
+  </gazebo>
+
+  <link name="thighR">
     <inertial>
       <origin
         xyz="0.0149 -0.105 -0.18907"
@@ -107,13 +124,20 @@
     </collision>
   </link>
 
+  <gazebo reference="thighR">
+      <kp>1000.0</kp>
+      <kd>1000.0</kd>
+      <mu1>0.5</mu1>
+      <mu2>0.5</mu2>
+  </gazebo>
+
   <joint name="hipR" type="revolute">
     <parent link="body"/>
     <child link="thighR"/>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <axis xyz="0 1 0" />
-    <dynamics damping="1.0" friction="1.0"/>
-    <limit effort="1000.0" velocity="50" lower="-1.57" upper="1.57" />
+    <dynamics damping="0.1" friction="0.2"/>
+    <limit effort="10.0" velocity="1000" lower="-1.57" upper="1.57" />
   </joint>
 
   <transmission name="hipR_trans">
@@ -132,8 +156,8 @@
     <child link="thighL"/>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <axis xyz="0 1 0" />
-    <dynamics damping="1.0" friction="1.0"/>
-    <limit effort="1000.0" velocity="50" lower="-1.57" upper="1.57" />
+    <dynamics damping="0.1" friction="0.2"/>
+    <limit effort="10.0" velocity="1000" lower="-1.57" upper="1.57" />
   </joint>
 
   <transmission name="hipL_trans">
@@ -147,8 +171,7 @@
     </actuator>
   </transmission>
 
-  <link
-    name="pylonR">
+  <link name="pylonR">
     <inertial>
       <origin
         xyz="0.00071137 -0.14671 0.059447"
@@ -188,6 +211,13 @@
     </collision>
   </link>
 
+  <gazebo reference="pylonR">
+      <kp>1000.0</kp>
+      <kd>1000.0</kd>
+      <mu1>0.5</mu1>
+      <mu2>0.5</mu2>
+  </gazebo>
+
   <joint name="kneeR" type="revolute">
     <origin
       xyz="-0.0073766 -0.062441 -0.4427"
@@ -198,8 +228,8 @@
       link="pylonR" />
     <axis
       xyz="0 0 1" />
-    <dynamics damping="1.0" friction="1.0"/>
-    <limit effort="1000.0" velocity="50" lower="-1.57" upper="1.57" />
+    <dynamics damping="0.1" friction="0.2"/>
+    <limit effort="10.0" velocity="1000" lower="-1.57" upper="1.57" />
   </joint>
 
   <transmission name="kneeR_trans">
@@ -213,8 +243,7 @@
     </actuator>
   </transmission>
 
-  <link
-    name="footR">
+  <link name="footR">
     <inertial>
       <origin
         xyz="0.029606 0.056108 0.013102"
@@ -298,8 +327,15 @@
       </surface>
     </collision>
   </link>
-  <joint
-    name="ankleR"
+
+  <gazebo reference="footR">
+      <kp>1000.0</kp>
+      <kd>1000.0</kd>
+      <mu1>0.5</mu1>
+      <mu2>0.5</mu2>
+  </gazebo>
+
+  <joint name="ankleR"
     type="revolute">
     <origin
       xyz="-0.00077967 -0.3134 0.026811"
@@ -310,8 +346,8 @@
       link="footR" />
     <axis
       xyz="1 0 0" />
-    <dynamics damping="1.0" friction="1.0"/>
-    <limit effort="1000.0" velocity="50" lower="-1.57" upper="1.57" />      
+    <dynamics damping="0.1" friction="0.2"/>
+    <limit effort="10.0" velocity="1000" lower="-1.57" upper="1.57" />      
   </joint>
 
   <transmission name="ankleR_trans">
@@ -325,8 +361,7 @@
     </actuator>
   </transmission>
 
-  <link
-    name="pylonL">
+  <link name="pylonL">
     <inertial>
       <origin
         xyz="0.00071104 -0.14671 -0.059447"
@@ -365,8 +400,15 @@
       </geometry>
     </collision>
   </link>
-  <joint
-    name="kneeL"
+
+  <gazebo reference="pylonL">
+      <kp>1000.0</kp>
+      <kd>1000.0</kd>
+      <mu1>0.5</mu1>
+      <mu2>0.5</mu2>
+  </gazebo>
+
+  <joint name="kneeL"
     type="revolute">
     <origin
       xyz="-0.0073766 0.057865 -0.4427"
@@ -377,8 +419,8 @@
       link="pylonL" />
     <axis
       xyz="0 0 1" />
-    <dynamics damping="1.0" friction="1.0"/>
-    <limit effort="1000.0" velocity="50" lower="-1.57" upper="1.57" />      
+    <dynamics damping="0.1" friction="0.2"/>
+    <limit effort="10.0" velocity="1000" lower="-1.57" upper="1.57" />      
   </joint>
 
   <transmission name="kneeL_trans">
@@ -392,8 +434,7 @@
     </actuator>
   </transmission>
 
-  <link
-    name="footL">
+  <link name="footL">
     <inertial>
       <origin
         xyz="0.029606 -0.056108 0.013102"
@@ -477,8 +518,15 @@
       </surface>
     </collision>
   </link>
-  <joint
-    name="ankleL"
+
+  <gazebo reference="footL">
+      <kp>1000.0</kp>
+      <kd>1000.0</kd>
+      <mu1>0.5</mu1>
+      <mu2>0.5</mu2>
+  </gazebo>
+
+  <joint name="ankleL"
     type="revolute">
     <origin
       xyz="-0.00077967 -0.3134 -0.026811"
@@ -489,8 +537,8 @@
       link="footL" />
     <axis
       xyz="1 0 0" />
-    <dynamics damping="1.0" friction="1.0"/>      
-    <limit effort="1000.0" velocity="50" lower="-1.57" upper="1.57" />      
+    <dynamics damping="0.1" friction="0.2"/>      
+    <limit effort="10.0" velocity="1000" lower="-1.57" upper="1.57" />      
   </joint>
 
   <transmission name="ankleL_trans">
@@ -503,11 +551,5 @@
       <mechanicalReduction>100</mechanicalReduction>
     </actuator>
   </transmission>
-
-  <gazebo>
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>/oslsim</robotNamespace>
-    </plugin>
-  </gazebo>
 
 </robot>

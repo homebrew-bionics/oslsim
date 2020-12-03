@@ -22,7 +22,7 @@
     output="screen" ns="/oslsim" args="joint_state_controller hipL_position_controller hipR_position_controller kneeL_position_controller kneeR_position_controller ankleL_position_controller ankleR_position_controller"/>
 
   <!-- call with walk:=true to start walking -->
-  <arg name="walk" default="false" />
+  <arg name="walk" default="true" />
   <group if="$(arg walk)">
     <node name="oslsim_walker" pkg="oslsim" type="walk.py" />
   </group>    
