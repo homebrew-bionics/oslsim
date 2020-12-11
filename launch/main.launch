@@ -6,7 +6,7 @@
     <arg name="paused" value="true"/>    
   </include>
   
-  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-urdf -model oslsim -z 0.875 -param robot_description" />
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-urdf -model oslsim -z 0.87 -param robot_description" />
 
   <rosparam file="$(find oslsim)/config/joints.yaml" command="load"/>
 

@@ -11,7 +11,7 @@
   <link name="slider">
     <inertial>
           <origin rpy="0.0 0 0" xyz="0 0 0"/>
-          <mass value="0.0001" />
+          <mass value="1.0" />
           <inertia ixx="1.0e-07" ixy="0.0" ixz="0.0" iyy="1.0e-07" iyz="0.0" izz="1.0e-07"/>
       </inertial>
       <collision>
@@ -35,8 +35,8 @@
       <parent link="world" />
       <child link="slider" />
       <axis xyz="1 0 0" />
-      <limit effort="100" lower="-10.0" upper="100.0" velocity="1" />
-      <dynamics damping="0.15" friction="0.15"/>
+      <limit effort="100" lower="-10.0" upper="100.0" velocity="10" />
+      <dynamics damping="1.0" friction="1.0"/>
   </joint>
 
   <link name="entity">
@@ -58,7 +58,7 @@
   <joint name="entity_joint" type="fixed">
       <parent link="slider"/>
       <child link="entity"/>
-      <origin xyz="0 0 -0.045" rpy="0 0 0"/>
+      <origin xyz="0 0 -0.05" rpy="0 0 0"/>
   </joint>
 
   <joint name="root_joint" type="fixed">
@@ -187,8 +187,8 @@
     <child link="thighR"/>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <axis xyz="0 1 0" />
-    <dynamics damping="0.1" friction="0.2"/>
-    <limit effort="10.0" velocity="1000" lower="-1.57" upper="1.57" />
+    <dynamics damping="0.1" friction="0.1"/>
+    <limit effort="1.0" velocity="100" lower="-1.57" upper="1.57" />
   </joint>
 
   <transmission name="hipR_trans">
@@ -198,7 +198,7 @@
     </joint>
     <actuator name="hipR_motor">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>100</mechanicalReduction>
+      <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
 
@@ -207,8 +207,8 @@
     <child link="thighL"/>
     <origin xyz="0 0 0" rpy="0 0 0" />
     <axis xyz="0 1 0" />
-    <dynamics damping="0.1" friction="0.2"/>
-    <limit effort="10.0" velocity="1000" lower="-1.57" upper="1.57" />
+    <dynamics damping="0.1" friction="0.1"/>
+    <limit effort="1.0" velocity="100" lower="-1.57" upper="1.57" />
   </joint>
 
   <transmission name="hipL_trans">
@@ -218,7 +218,7 @@
     </joint>
     <actuator name="hipL_motor">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>100</mechanicalReduction>
+      <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
 
@@ -278,8 +278,8 @@
       link="pylonR" />
     <axis
       xyz="0 0 1" />
-    <dynamics damping="0.1" friction="0.2"/>
-    <limit effort="10.0" velocity="1000" lower="-1.57" upper="1.57" />
+    <dynamics damping="0.1" friction="0.1"/>
+    <limit effort="1.0" velocity="100" lower="-1.57" upper="1.57" />
   </joint>
 
   <transmission name="kneeR_trans">
@@ -289,7 +289,7 @@
     </joint>
     <actuator name="kneeR_motor">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>100</mechanicalReduction>
+      <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
 
@@ -324,10 +324,10 @@
     </visual>
     <collision>
       <origin
-        xyz="0.029606 0.056108 0.03"
+        xyz="0.029606 0.0715 0.03"
         rpy="-0.175 0 0" />
       <geometry>
-        <box size="0.05 0.05 0.22"/>
+        <box size="0.0675 0.025 0.22"/>
       </geometry>
       <surface>
         <friction>
@@ -395,8 +395,8 @@
       link="footR" />
     <axis
       xyz="1 0 0" />
-    <dynamics damping="0.1" friction="0.2"/>
-    <limit effort="10.0" velocity="1000" lower="-1.57" upper="1.57" />      
+    <dynamics damping="0.1" friction="0.1"/>
+    <limit effort="1.0" velocity="100" lower="-1.57" upper="1.57" />      
   </joint>
 
   <transmission name="ankleR_trans">
@@ -406,7 +406,7 @@
     </joint>
     <actuator name="ankleR_motor">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>100</mechanicalReduction>
+      <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
 
@@ -467,8 +467,8 @@
       link="pylonL" />
     <axis
       xyz="0 0 1" />
-    <dynamics damping="0.1" friction="0.2"/>
-    <limit effort="10.0" velocity="1000" lower="-1.57" upper="1.57" />      
+    <dynamics damping="0.1" friction="0.1"/>
+    <limit effort="1.0" velocity="100" lower="-1.57" upper="1.57" />      
   </joint>
 
   <transmission name="kneeL_trans">
@@ -478,7 +478,7 @@
     </joint>
     <actuator name="kneeL_motor">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>100</mechanicalReduction>
+      <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
 
@@ -513,10 +513,10 @@
     </visual>
     <collision>
       <origin
-        xyz="0.029606 -0.056108 0.03"
+        xyz="0.029606 -0.0715 0.03"
         rpy="0.175 0 0" />
       <geometry>
-        <box size="0.05 0.05 0.22"/>
+        <box size="0.0675 0.025 0.22"/>
       </geometry>
       <surface>
         <friction>
@@ -584,8 +584,8 @@
       link="footL" />
     <axis
       xyz="1 0 0" />
-    <dynamics damping="0.1" friction="0.2"/>      
-    <limit effort="10.0" velocity="1000" lower="-1.57" upper="1.57" />      
+    <dynamics damping="0.1" friction="0.1"/>      
+    <limit effort="1.0" velocity="100" lower="-1.57" upper="1.57" />      
   </joint>
 
   <transmission name="ankleL_trans">
@@ -595,7 +595,7 @@
     </joint>
     <actuator name="ankleL_motor">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>100</mechanicalReduction>
+      <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
 
