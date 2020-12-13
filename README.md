@@ -10,7 +10,9 @@ A ROS package that provides the necessary interfaces to simulate the Open-source
 
 <img src="./oslsim.jpg" width="840">
 
-OSL is licensed under a [Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/deed.en_US). To know more, visit https://opensourceleg.com/
+OSL is licensed under a [Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/deed.en_US).
+
+To know more, visit https://opensourceleg.com
 
 ## Getting Started
 ```
@@ -26,4 +28,4 @@ $ roslaunch oslsim main.launch walk:=true
 ```
 *Place your controller logic within the ``oslsim_walker`` node.*
 
-<img src="./oslsim_walk.jpg" width="840">
+<img src="./oslsim_walk.gif" width="840">
