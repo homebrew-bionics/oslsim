@@ -2,7 +2,7 @@
     <world name="default">
         <scene>
             <ambient>0.500000 0.500000 0.500000 0.500000</ambient>
-            <background>0.700000 0.700000 0.700000 1.000000</background>
+            <background>1.00000 1.00000 1.00000 1.000000</background>
             <shadows>0</shadows>
         </scene>
         <physics type="ode">

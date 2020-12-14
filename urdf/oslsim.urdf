@@ -25,7 +25,7 @@
   <link name="slider">
     <inertial>
           <origin rpy="0.0 0 0" xyz="0 0 0"/>
-          <mass value="1.0" />
+          <mass value="0.001" />
           <inertia ixx="1.0e-07" ixy="0.0" ixz="0.0" iyy="1.0e-07" iyz="0.0" izz="1.0e-07"/>
       </inertial>
       <collision>
@@ -50,13 +50,13 @@
       <child link="slider" />
       <axis xyz="1 0 0" />
       <limit effort="100" lower="-10.0" upper="100.0" velocity="10" />
-      <dynamics damping="1.0" friction="1.0"/>
+      <dynamics damping="0.2" friction="0.15"/>
   </joint>
 
   <link name="entity">
       <inertial>
             <origin rpy="0.0 0 0" xyz="0 0 0"/>
-            <mass value="0.01" />
+            <mass value="0.001" />
             <inertia ixx="4.16666666667e-05" ixy="0.0" ixz="0.0" iyy="4.16666666667e-05" iyz="0.0" izz="4.16666666667e-05"/>
         </inertial>
   </link>
@@ -86,7 +86,7 @@
         xyz="0 0 0"
         rpy="0 0 0" />
       <mass
-        value="0.001" />
+        value="0.1" />
       <inertia
         ixx="0.01"
         ixy="0"
@@ -367,7 +367,7 @@
         xyz="0.029606 0.056108 0.013102"
         rpy="0 0 0" />
       <mass
-        value="0.19826" />
+        value="0.79826" />
       <inertia
         ixx="0.00051564"
         ixy="-2.531E-06"
@@ -379,7 +379,7 @@
     <visual>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="0.175 0 0" />
       <geometry>
         <mesh
           filename="package://oslsim/meshes/footR.dae" />
@@ -392,16 +392,16 @@
     </visual>
     <collision>
       <origin
-        xyz="0.029606 0.0715 0.03"
-        rpy="-0.175 0 0" />
+        xyz="0.029606 0.065 0.05"
+        rpy="0 0 0" />
       <geometry>
-        <box size="0.0675 0.025 0.22"/>
+        <box size="0.0675 0.025 0.2"/>
       </geometry>
       <surface>
         <friction>
           <ode>
             <mu>1.0</mu>
-            <mu2>0.25</mu2>
+            <mu2>1.0</mu2>
             <fdir1>1 0 0</fdir1>
             <slip1>0</slip1>
             <slip2>0</slip2>
@@ -415,32 +415,7 @@
               <slip>0</slip>
             </ode>
           </torsional>
-        </friction>
-        <bounce>
-          <restitution_coefficient>0</restitution_coefficient>
-          <threshold>1e+06</threshold>
-        </bounce>
-        <contact>
-          <collide_without_contact>0</collide_without_contact>
-          <collide_without_contact_bitmask>0</collide_without_contact_bitmask>
-          <collide_bitmask>0</collide_bitmask>
-          <ode>
-            <max_vel>0.1</max_vel>
-            <soft_cfm>0.8</soft_cfm>
-            <soft_erp>0.8</soft_erp>
-            <kd>2500</kd>
-            <kp>10</kp>
-            <min_depth>0.001</min_depth>
-          </ode>
-          <bullet>
-            <split_impulse>1</split_impulse>
-            <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-            <soft_cfm>0</soft_cfm>
-            <soft_erp>0.2</soft_erp>
-            <kp>1e+13</kp>
-            <kd>1</kd>
-          </bullet>
-        </contact>     
+        </friction>    
       </surface>
     </collision>
   </link>
@@ -448,8 +423,8 @@
   <gazebo reference="footR">
       <kp>1000.0</kp>
       <kd>1000.0</kd>
-      <mu1>0.5</mu1>
-      <mu2>0.5</mu2>
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
       <sensor name="footR_imu" type="imu">
         <always_on>true</always_on>
         <update_rate>50</update_rate>
@@ -592,7 +567,7 @@
         xyz="0.029606 -0.056108 0.013102"
         rpy="0 0 0" />
       <mass
-        value="0.19826" />
+        value="0.79826" />
       <inertia
         ixx="0.00051563"
         ixy="2.5317E-06"
@@ -604,7 +579,7 @@
     <visual>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="-0.175 0 0" />
       <geometry>
         <mesh
           filename="package://oslsim/meshes/footL.dae" />
@@ -617,16 +592,16 @@
     </visual>
     <collision>
       <origin
-        xyz="0.029606 -0.0715 0.03"
-        rpy="0.175 0 0" />
+        xyz="0.029606 -0.065 0.05"
+        rpy="0 0 0" />
       <geometry>
-        <box size="0.0675 0.025 0.22"/>
+        <box size="0.0675 0.025 0.2"/>
       </geometry>
       <surface>
         <friction>
           <ode>
             <mu>1.0</mu>
-            <mu2>0.25</mu2>
+            <mu2>1.0</mu2>
             <fdir1>1 0 0</fdir1>
             <slip1>0</slip1>
             <slip2>0</slip2>
@@ -640,32 +615,7 @@
               <slip>0</slip>
             </ode>
           </torsional>
-        </friction>
-        <bounce>
-          <restitution_coefficient>0</restitution_coefficient>
-          <threshold>1e+06</threshold>
-        </bounce>
-        <contact>
-          <collide_without_contact>0</collide_without_contact>
-          <collide_without_contact_bitmask>0</collide_without_contact_bitmask>
-          <collide_bitmask>0</collide_bitmask>
-          <ode>
-            <max_vel>0.1</max_vel>
-            <soft_cfm>0.8</soft_cfm>
-            <soft_erp>0.8</soft_erp>
-            <kd>2500</kd>
-            <kp>10</kp>
-            <min_depth>0.001</min_depth>
-          </ode>
-          <bullet>
-            <split_impulse>1</split_impulse>
-            <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
-            <soft_cfm>0</soft_cfm>
-            <soft_erp>0.2</soft_erp>
-            <kp>1e+13</kp>
-            <kd>1</kd>
-          </bullet>
-        </contact>     
+        </friction>  
       </surface>
     </collision>
   </link>
@@ -673,8 +623,8 @@
   <gazebo reference="footL">
       <kp>1000.0</kp>
       <kd>1000.0</kd>
-      <mu1>0.5</mu1>
-      <mu2>0.5</mu2>
+      <mu1>1.0</mu1>
+      <mu2>1.0</mu2>
       <sensor name="footL_imu" type="imu">
         <always_on>true</always_on>
         <update_rate>50</update_rate>
@@ -733,12 +683,6 @@
               <sphere radius="0.020"/>
           </geometry>
       </collision>
-      <visual>
-          <origin rpy="0.0 0 0" xyz="0 0 0"/>
-          <geometry>
-              <sphere radius="0.020"/>
-          </geometry>
-      </visual>
 </link>
 
   <gazebo reference="footL_loadcell_link">
@@ -751,7 +695,7 @@
   <joint name="footL_loadcell_link_joint" type="fixed">
       <parent link="footL"/>
       <child link="footL_loadcell_link"/>
-      <origin xyz="0.03 -0.07 0" rpy="0 0 0"/>
+      <origin xyz="0.03 -0.06 0" rpy="0 0 0"/>
   </joint>
 
   <gazebo reference="footL_loadcell_link">
@@ -781,12 +725,6 @@
               <sphere radius="0.020"/>
           </geometry>
       </collision>
-      <visual>
-          <origin rpy="0.0 0 0" xyz="0 0 0"/>
-          <geometry>
-              <sphere radius="0.020"/>
-          </geometry>
-      </visual>
 </link>
 
   <gazebo reference="footR_loadcell_link">
@@ -799,7 +737,7 @@
   <joint name="footR_loadcell_link_joint" type="fixed">
       <parent link="footR"/>
       <child link="footR_loadcell_link"/>
-      <origin xyz="0.03 0.07 0" rpy="0 0 0"/>
+      <origin xyz="0.03 0.06 0" rpy="0 0 0"/>
   </joint>
 
   <gazebo reference="footR_loadcell_link">

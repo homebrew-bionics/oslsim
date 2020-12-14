@@ -13,23 +13,27 @@ class JointCmds:
         self.path = path + '/data/'
 
     def update(self, dt):
-        self.t += dt
+        sign = 1.0
+
+        if self.t%100 > 50:
+            sign = -1.0
+
         with open(self.path + 'angles.pkl', 'rb') as f:
             angles = pickle.load(f)
 
         # -------------------------------------- #
 
-        self.jnt_cmd_dict['ankleL'] = 0.0174533 * angles['angle_ankle'][self.t%100]
-        self.jnt_cmd_dict['ankleR'] = 0.0174533 * (angles['angle_ankle'][100 - self.t%100])
+        self.jnt_cmd_dict['ankleR'] = 0.0174533 * angles['angle_ankle'][self.t%100]
+        self.jnt_cmd_dict['hipR'] = 0.0174533 * angles['angle_thigh'][self.t%100]
+        self.jnt_cmd_dict['kneeR'] = -0.0174533 * angles['angle_knee'][self.t%100]
 
-        self.jnt_cmd_dict['hipL'] = 0.0174533 * angles['angle_thigh'][self.t%100]
-        self.jnt_cmd_dict['hipR'] = 0.0174533 * (angles['angle_thigh'][100 - self.t%100])
-
-        self.jnt_cmd_dict['kneeL'] = 0.0174533 * angles['angle_knee'][self.t%100]
-        self.jnt_cmd_dict['kneeR'] = 0.0174533 * (angles['angle_knee'][100 - self.t%100])
+        self.jnt_cmd_dict['ankleL'] = -0.0174533 * (angles['angle_ankle'][abs(50 + sign * (self.t%100))])
+        self.jnt_cmd_dict['hipL'] = 0.0174533 * (angles['angle_thigh'][abs(50 + sign * (self.t%100))])
+        self.jnt_cmd_dict['kneeL'] = -0.0174533 * (angles['angle_knee'][abs(50 + sign * (self.t%100))])
 
         # -------------------------------------- #
 
+        self.t += dt
         return self.jnt_cmd_dict
 
 
