@@ -155,7 +155,7 @@
         <topic>__default_topic__</topic>
         <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
           <robotNamespace>/oslsim</robotNamespace>
-          <topicName>imu/thigh_left</topicName>
+          <topicName>imu/thighL</topicName>
           <bodyName>thighL</bodyName>
           <updateRateHZ>50.0</updateRateHZ>
           <gaussianNoise>0.0</gaussianNoise>
@@ -219,7 +219,7 @@
         <topic>__default_topic__</topic>
         <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
           <robotNamespace>/oslsim</robotNamespace>
-          <topicName>imu/thigh_right</topicName>
+          <topicName>imu/thighR</topicName>
           <bodyName>thighR</bodyName>
           <updateRateHZ>50.0</updateRateHZ>
           <gaussianNoise>0.0</gaussianNoise>
@@ -323,7 +323,7 @@
         <topic>__default_topic__</topic>
         <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
           <robotNamespace>/oslsim</robotNamespace>
-          <topicName>imu/pylon_right</topicName>
+          <topicName>imu/pylonR</topicName>
           <bodyName>pylonR</bodyName>
           <updateRateHZ>50.0</updateRateHZ>
           <gaussianNoise>0.0</gaussianNoise>
@@ -457,7 +457,7 @@
         <topic>__default_topic__</topic>
         <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
           <robotNamespace>/oslsim</robotNamespace>
-          <topicName>imu/foot_right</topicName>
+          <topicName>imu/footR</topicName>
           <bodyName>footR</bodyName>
           <updateRateHZ>50.0</updateRateHZ>
           <gaussianNoise>0.0</gaussianNoise>
@@ -547,7 +547,7 @@
         <topic>__default_topic__</topic>
         <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
           <robotNamespace>/oslsim</robotNamespace>
-          <topicName>imu/pylon_left</topicName>
+          <topicName>imu/pylonL</topicName>
           <bodyName>pylonL</bodyName>
           <updateRateHZ>50.0</updateRateHZ>
           <gaussianNoise>0.0</gaussianNoise>
@@ -682,7 +682,7 @@
         <topic>__default_topic__</topic>
         <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
           <robotNamespace>/oslsim</robotNamespace>
-          <topicName>imu/foot_left</topicName>
+          <topicName>imu/footL</topicName>
           <bodyName>footL</bodyName>
           <updateRateHZ>50.0</updateRateHZ>
           <gaussianNoise>0.0</gaussianNoise>
