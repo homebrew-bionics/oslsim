@@ -59,14 +59,14 @@ A python script is included within this package that subscribes to the above sen
     <img src="./rosgraph.png" width="600" class="center">
 </p>
 
-To launch the simulation
+To launch the simulation:
 
 ```
 $ roslaunch oslsim main.launch walk:=true
 ```
 <img src="./oslsim_walk.gif" width="840">
 
-The ``*oslsim_walker`` node serves as a container to various control strategies and publishes joint commands to their respective position controllers. 
+The ``oslsim_walker`` node serves as a container to various control strategies and publishes joint commands to their respective position controllers. 
 
 ## Issues and Feature requests
 Please report bugs or request features [here](https://github.com/homebrew-bionics/oslsim/issues).
