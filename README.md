@@ -30,3 +30,5 @@ $ source devel/setup.bash
 $ roslaunch oslsim main.launch walk:=true
 ```
 *Place your controller logic within the ``oslsim_walker`` node.*
+
+<img src="./oslsim_walk.gif" width="840">
