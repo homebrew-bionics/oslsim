@@ -6,7 +6,7 @@
 
 <img src="./oslsim_banner.gif" width="840">
 
-A ROS package that provides the necessary interfaces to simulate the Open-source leg (OSL) proposed by the **Neurobionics Lab at UM** to unify the research field of prosthetic leg controls. OSL is a robust and relatively inexpensive system that can be easily manufactured, assembled, and controlled. OSL is licensed under a [Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/deed.en_US). To know more, visit https://opensourceleg.com
+A ROS package that provides the necessary interfaces to simulate the Open-source leg (OSL) proposed by the **Neurobionics Lab at the University of Michigan** to unify the research field of prosthetic leg controls. OSL is a robust and relatively inexpensive system that can be easily manufactured, assembled, and controlled. OSL is licensed under a [Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/deed.en_US). To know more, visit https://opensourceleg.com
 
 ## Getting Started
 
@@ -18,7 +18,7 @@ $ sudo apt-get install ros-<ros-distro>-desktop-full
 $ sudo apt-get install ros-<ros-distro>-ros-control
 $ sudo apt-get install ros-melodic-effort-controllers
 ```
-*Preferred **\<ros-distro\>**: ``melodic``*. If you are new to **ROS**, read more about [Installing and configuring your ROS environment](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment).
+*Preferred **\<ros-distro\>**: ``melodic``*. If you are new to **ROS**, read more about [Configuring your ROS environment](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment).
 
 Build the package in your catkin workspace.
 ```
@@ -59,14 +59,14 @@ A python script is included within this package that subscribes to the above sen
     <img src="./rosgraph.png" width="600" class="center">
 </p>
 
-``oslsim_walker`` node encloses the controller logic and publishes joint commands to their respective position controllers. 
-
 To launch the simulation
 
 ```
 $ roslaunch oslsim main.launch walk:=true
 ```
 <img src="./oslsim_walk.gif" width="840">
+
+The ``*oslsim_walker`` node serves as a container to various control strategies and publishes joint commands to their respective position controllers. 
 
 ## Issues and Feature requests
 Please report bugs or request features [here](https://github.com/homebrew-bionics/oslsim/issues).
