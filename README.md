@@ -12,23 +12,61 @@ A ROS package that provides the necessary interfaces to simulate the Open-source
 
 <img src="./oslsim.jpg" width="840">
 
+This package requires an installation of [ROS](https://www.ros.org/) and [Gazebo](http://gazebosim.org/).
 ```
+$ sudo apt-get install ros-<ros-distro>-desktop-full
+$ sudo apt-get install ros-<ros-distro>-ros-control
+$ sudo apt-get install ros-melodic-effort-controllers
+```
+*Preferred **\<ros-distro\>**: ``melodic``*. If you are new to **ROS**, read more about [Installing and configuring your ROS environment](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment).
+
+Build the package in your catkin workspace.
+```
+$ cd <catkin-workspace>/src
 $ git clone https://github.com/homebrew-bionics/oslsim.git
 $ cd ../
 $ catkin_make
 $ source devel/setup.bash
 ```
 ## Sensors
-### Inertial Measurement Unit (IMU)
+
 <img src="./oslsim_imu.gif" width="840">
 
-### Load cell
+The Open-source Leg (OSL) model in this package comprises
+
+* 6 Inertial Measurement units
+* Odometry
+* 2 Load cells
+
+## Topics
+<img src="./topics.png" width="840">
+
+## Load cells
+
+Each foot has a bumper plugin that acts as a load cell. The plugin publishes
+* Force (fx, fy, fz)
+* Torque (Tx, Ty, Tz)
+* Contact positions
+* Contact normals
+
 <img src="./oslsim_loadcell.gif" width="840">
 
-## Usage
+A python script is included within this package that subscribes to the above sensor data and publishes the required ones to any desired ROS topic.
+
+## Run
+
+<p align="center">
+    <img src="./rosgraph.png" width="600" class="center">
+</p>
+
+``oslsim_walker`` node encloses the controller logic and publishes joint commands to their respective position controllers. 
+
+To launch the simulation
+
 ```
 $ roslaunch oslsim main.launch walk:=true
 ```
-*Place your controller logic within the ``oslsim_walker`` node.*
-
 <img src="./oslsim_walk.gif" width="840">
+
+## Issues and Feature requests
+Please report bugs or request features [here](https://github.com/homebrew-bionics/oslsim/issues).
