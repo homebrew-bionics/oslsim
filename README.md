@@ -6,9 +6,7 @@
 
 <img src="./oslsim_banner.gif" width="840">
 
-A ROS package that provides the necessary interfaces to simulate the Open-source leg (OSL) proposed by the **Neurobionics Lab at UM** to unify the research field of prosthetic leg controls. OSL is a robust and relatively inexpensive system that can be easily manufactured, assembled, and controlled. OSL is licensed under a [Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/deed.en_US).
-
-To know more, visit https://opensourceleg.com
+A ROS package that provides the necessary interfaces to simulate the Open-source leg (OSL) proposed by the **Neurobionics Lab at UM** to unify the research field of prosthetic leg controls. OSL is a robust and relatively inexpensive system that can be easily manufactured, assembled, and controlled. OSL is licensed under a [Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/deed.en_US). To know more, visit https://opensourceleg.com
 
 ## Getting Started
 
@@ -22,6 +20,7 @@ $ source devel/setup.bash
 ```
 ## Sensors
 ### Inertial Measurement Unit (IMU)
+<img src="./oslsim_imu.gif" width="840">
 
 ### Load cell
 <img src="./oslsim_loadcell.gif" width="840">
@@ -31,5 +30,3 @@ $ source devel/setup.bash
 $ roslaunch oslsim main.launch walk:=true
 ```
 *Place your controller logic within the ``oslsim_walker`` node.*
-
-<img src="./oslsim_walk.gif" width="840">
