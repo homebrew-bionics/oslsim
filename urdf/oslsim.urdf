@@ -121,11 +121,11 @@
     </inertial>
     <visual>
       <origin
-        xyz="0 0 0"
+        xyz="0 0 -0.004"
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://oslsim/meshes/thighL.dae" />
+          filename="package://oslsim/meshes/thigh.dae" />
       </geometry>
       <material
         name="">
@@ -189,7 +189,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://oslsim/meshes/thighR.dae" />
+          filename="package://oslsim/meshes/socket.dae" />
       </geometry>
       <material
         name="">
@@ -289,11 +289,11 @@
     </inertial>
     <visual>
       <origin
-        xyz="0 0 0"
+        xyz="0.006 0.01 0.006"
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://oslsim/meshes/pylonL.dae" />
+          filename="package://oslsim/meshes/pylon.dae" />
       </geometry>
       <material
         name="">
@@ -468,11 +468,11 @@
     </inertial>
     <visual>
       <origin
-        xyz="0 0 0"
-        rpy="-0.175 0 0" />
+        xyz="-0.0035 0.02 0.024"
+        rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://oslsim/meshes/footL.dae" />
+          filename="package://oslsim/meshes/foot.dae" />
       </geometry>
       <material
         name="">
@@ -671,7 +671,7 @@
     </actuator>
   </transmission>
 
-  <link name="footL_loadcell_link">
+  <link name="footL_heel">
     <inertial>
           <origin xyz="0 0 0" rpy="0 0 0"/>
           <mass value="0.00001" />
@@ -685,7 +685,7 @@
       </collision>
   </link>
 
-  <gazebo reference="footL_loadcell_link">
+  <gazebo reference="footL_heel">
       <kp>1000.0</kp>
       <kd>1000.0</kd>
       <mu1>0.5</mu1>
@@ -713,9 +713,9 @@
       <mu2>0.5</mu2>
   </gazebo>
 
-  <joint name="footL_loadcell_link_joint" type="fixed">
+  <joint name="footL_heel_joint" type="fixed">
       <parent link="footL"/>
-      <child link="footL_loadcell_link"/>
+      <child link="footL_heel"/>
       <origin xyz="0.03 -0.065 0" rpy="0 0 0"/>
   </joint>
 
@@ -724,21 +724,6 @@
       <child link="footR_loadcell_link"/>
       <origin xyz="0.03 0.065 0" rpy="0 0 0"/>
   </joint>
-
-  <gazebo reference="footL_loadcell_link">
-      <sensor name="footL_loadcell_sensor" type="contact">
-        <always_on>true</always_on>
-        <update_rate>50</update_rate>
-        <contact>
-          <collision>footL_loadcell_link_collision_1</collision>
-        </contact>
-        <plugin name="footL_bumper_plugin" filename="libgazebo_ros_bumper.so">
-          <robotNamespace>/oslsim</robotNamespace>
-          <bumperTopicName>footL/loadcell</bumperTopicName>
-          <frameName>footL_loadcell_link</frameName>
-        </plugin>
-      </sensor>
-  </gazebo>
 
   <gazebo reference="footR_loadcell_link">
       <sensor name="footR_loadcell_sensor" type="contact">
