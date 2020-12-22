@@ -41,8 +41,8 @@
                     <surface>
                         <friction>
                             <ode>
-                                <mu>0.500000</mu>
-                                <mu2>0.500000</mu2>
+                                <mu>0.100000</mu>
+                                <mu2>0.100000</mu2>
                                 <fdir1>0.000000 0.000000 0.000000</fdir1>
                                 <slip1>0.000000</slip1>
                                 <slip2>0.000000</slip2>
@@ -73,12 +73,12 @@
         </model>
 
         <light name="point_white_right" type="point">
-            <pose>0.000000 5.000000 4.000000 0.000000 -0.000000 0.000000</pose>
+            <pose>0.000000 10.000000 4.000000 0.000000 -0.000000 0.000000</pose>
             <diffuse>1.000000 1.000000 1.000000 1.000000</diffuse>
             <specular>0.100000 0.100000 0.100000 1.000000</specular>
             <attenuation>
-                <range>10.000000</range>
-                <linear>0.100000</linear>
+                <range>30.000000</range>
+                <linear>0.06500000</linear>
                 <constant>0.200000</constant>
                 <quadratic>0.000000</quadratic>
             </attenuation>
@@ -86,12 +86,12 @@
             <cast_shadows>0</cast_shadows>
         </light>
         <light name="point_white_left" type="point">
-            <pose>0.000000 -5.000000 4.000000 0.000000 -0.000000 0.000000</pose>
+            <pose>0.000000 -10.000000 4.000000 0.000000 -0.000000 0.000000</pose>
             <diffuse>1.000000 1.000000 1.000000 1.000000</diffuse>
             <specular>0.100000 0.100000 0.100000 1.000000</specular>
             <attenuation>
-                <range>10.000000</range>
-                <linear>0.100000</linear>
+                <range>30.000000</range>
+                <linear>0.06500000</linear>
                 <constant>0.200000</constant>
                 <quadratic>0.000000</quadratic>
             </attenuation>
@@ -100,12 +100,12 @@
         </light>      
 
         <light name="point_white_front" type="point">
-            <pose>5.000000 0.000000 4.000000 0.000000 -0.000000 0.000000</pose>
+            <pose>10.000000 0.000000 4.000000 0.000000 -0.000000 0.000000</pose>
             <diffuse>1.000000 1.000000 1.000000 1.000000</diffuse>
             <specular>0.100000 0.100000 0.100000 1.000000</specular>
             <attenuation>
-                <range>10.000000</range>
-                <linear>0.100000</linear>
+                <range>30.000000</range>
+                <linear>0.06500000</linear>
                 <constant>0.200000</constant>
                 <quadratic>0.000000</quadratic>
             </attenuation>
@@ -113,12 +113,12 @@
             <cast_shadows>0</cast_shadows>
         </light>
         <light name="point_white_back" type="point">
-            <pose>-5.000000 0.000000 4.000000 0.000000 -0.000000 0.000000</pose>
+            <pose>-10.000000 0.000000 4.000000 0.000000 -0.000000 0.000000</pose>
             <diffuse>1.000000 1.000000 1.000000 1.000000</diffuse>
             <specular>0.100000 0.100000 0.100000 1.000000</specular>
             <attenuation>
-                <range>10.000000</range>
-                <linear>0.100000</linear>
+                <range>30.000000</range>
+                <linear>0.06500000</linear>
                 <constant>0.200000</constant>
                 <quadratic>0.000000</quadratic>
             </attenuation>

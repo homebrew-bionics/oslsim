@@ -49,8 +49,8 @@
       <parent link="world" />
       <child link="slider" />
       <axis xyz="1 0 0" />
-      <limit effort="1" lower="-10.0" upper="100.0" velocity="10" />
-      <dynamics damping="0.1" friction="0.1"/>
+      <limit effort="1" lower="-10.0" upper="100.0" velocity="1" />
+      <dynamics damping="0.2" friction="0.1"/>
   </joint>
 
   <link name="entity">
@@ -199,7 +199,7 @@
   <joint name="hipL" type="revolute">
     <parent link="body"/>
     <child link="thighL"/>
-    <origin xyz="0 0 0" rpy="0 0 0" />
+    <origin xyz="-0.015 0 0" rpy="0 0 0" />
     <axis xyz="0 1 0" />
     <dynamics damping="0.5" friction="0.5"/>
     <limit effort="1.0" velocity="100" lower="-1.57" upper="1.57" />
@@ -333,7 +333,7 @@
         <topic>__default_topic__</topic>
         <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
           <robotNamespace>/oslsim</robotNamespace>
-          <topicName>imu/pylonR</topicName>
+          <topicName>imu/pylon</topicName>
           <bodyName>pylonR</bodyName>
           <updateRateHZ>50.0</updateRateHZ>
           <gaussianNoise>0.0</gaussianNoise>
@@ -534,7 +534,7 @@
         <topic>__default_topic__</topic>
         <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
           <robotNamespace>/oslsim</robotNamespace>
-          <topicName>imu/footR</topicName>
+          <topicName>imu/foot</topicName>
           <bodyName>footR</bodyName>
           <updateRateHZ>50.0</updateRateHZ>
           <gaussianNoise>0.0</gaussianNoise>
@@ -662,7 +662,7 @@
         </contact>
         <plugin name="footR_bumper_plugin" filename="libgazebo_ros_bumper.so">
           <robotNamespace>/oslsim</robotNamespace>
-          <bumperTopicName>footR/loadcell</bumperTopicName>
+          <bumperTopicName>loadcell</bumperTopicName>
           <frameName>footR_loadcell_link</frameName>
         </plugin>
       </sensor>
