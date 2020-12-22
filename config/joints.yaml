@@ -3,33 +3,33 @@ oslsim:
     type: joint_state_controller/JointStateController
     publish_rate: 50  
 
-  hipL_position_controller:
+  hip_position_controller:
     type: effort_controllers/JointPositionController
-    joint: hipL
+    joint: hip
     pid: {p: 10, i: 0.1, d: 0.01}
 
-  hipR_position_controller:
+  osl_hip_position_controller:
     type: effort_controllers/JointPositionController
-    joint: hipR
+    joint: osl_hip
     pid: {p: 10, i: 0.1, d: 0.01}
 
-  kneeL_position_controller:
+  knee_position_controller:
     type: effort_controllers/JointPositionController
-    joint: kneeL
+    joint: knee
     pid: {p: 10, i: 0.1, d: 0.01}
 
-  kneeR_position_controller:
+  osl_knee_position_controller:
     type: effort_controllers/JointPositionController
-    joint: kneeR
+    joint: osl_knee
     pid: {p: 10, i: 0.1, d: 0.01}
 
-  ankleL_position_controller:
+  ankle_position_controller:
     type: effort_controllers/JointPositionController
-    joint: ankleL
+    joint: ankle
     pid: {p: 10, i: 0.1, d: 0.01}
 
-  ankleR_position_controller:
+  osl_ankle_position_controller:
     type: effort_controllers/JointPositionController
-    joint: ankleR
+    joint: osl_ankle
     pid: {p: 10, i: 0.1, d: 0.01}
 

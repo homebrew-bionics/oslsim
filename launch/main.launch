@@ -19,7 +19,7 @@
   </node>
 
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-    output="screen" ns="/oslsim" args="joint_state_controller hipL_position_controller hipR_position_controller kneeL_position_controller kneeR_position_controller ankleL_position_controller ankleR_position_controller"/>
+    output="screen" ns="/oslsim" args="joint_state_controller hip_position_controller osl_hip_position_controller knee_position_controller osl_knee_position_controller ankle_position_controller osl_ankle_position_controller"/>
 
   <node name="loadcell" pkg="oslsim" type="loadcell.py" output="screen"/>
 

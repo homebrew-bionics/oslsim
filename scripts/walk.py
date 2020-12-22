@@ -23,13 +23,13 @@ class JointCmds:
 
         # -------------------------------------- #
 
-        self.jnt_cmd_dict['ankleR'] = 0.0174533 * angles['angle_ankle'][self.t%100]
-        self.jnt_cmd_dict['hipR'] = 0.0174533 * angles['angle_thigh'][self.t%100]
-        self.jnt_cmd_dict['kneeR'] = -0.0174533 * angles['angle_knee'][self.t%100]
+        self.jnt_cmd_dict['osl_ankle'] = 0.0174533 * angles['angle_ankle'][self.t%100]
+        self.jnt_cmd_dict['osl_hip'] = 0.0174533 * angles['angle_thigh'][self.t%100]
+        self.jnt_cmd_dict['osl_knee'] = -0.0174533 * angles['angle_knee'][self.t%100]
 
-        self.jnt_cmd_dict['ankleL'] = -0.0174533 * (angles['angle_ankle'][abs(50 + sign * (self.t%100))])
-        self.jnt_cmd_dict['hipL'] = 0.0174533 * (angles['angle_thigh'][abs(50 + sign * (self.t%100))])
-        self.jnt_cmd_dict['kneeL'] = -0.0174533 * (angles['angle_knee'][abs(50 + sign * (self.t%100))])
+        self.jnt_cmd_dict['ankle'] = -0.0174533 * (angles['angle_ankle'][abs(50 + sign * (self.t%100))])
+        self.jnt_cmd_dict['hip'] = 0.0174533 * (angles['angle_thigh'][abs(50 + sign * (self.t%100))])
+        self.jnt_cmd_dict['knee'] = -0.0174533 * (angles['angle_knee'][abs(50 + sign * (self.t%100))])
 
         # -------------------------------------- #
 
@@ -57,7 +57,7 @@ def publish_commands(joints, hz):
 
 if __name__ == "__main__":
     try:
-        joints = ['hipL', 'kneeL', 'ankleL', 'hipR', 'kneeR', 'ankleR']
+        joints = ['hip', 'knee', 'ankle', 'osl_hip', 'osl_knee', 'osl_ankle']
         hz = 10
         publish_commands(joints, hz)
     except rospy.ROSInterruptException:
