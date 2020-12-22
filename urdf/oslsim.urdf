@@ -303,7 +303,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://oslsim/meshes/pylonR.dae" />
+          filename="package://oslsim/meshes/osl_shank.dae" />
       </geometry>
       <material
         name="">
