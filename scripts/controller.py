@@ -13,20 +13,13 @@ class JointCmds:
         self.path = path + '/data/'
 
     def update(self, dt):
-        sign = 1.0
-
-        if self.t%100 > 50:
-            sign = -1.0
-
         with open(self.path + 'angles.pkl', 'rb') as f:
             angles = pickle.load(f)
 
         # -------------------------------------- #
 
-        self.jnt_cmd_dict['osl_hip'] = 0.0174533 * angles['angle_thigh'][self.t%100]
-        self.jnt_cmd_dict['ankle'] = -0.0174533 * (angles['angle_ankle'][abs(50 + sign * (self.t%100))])
-        self.jnt_cmd_dict['hip'] = 0.0174533 * (angles['angle_thigh'][abs(50 + sign * (self.t%100))])
-        self.jnt_cmd_dict['knee'] = -0.0174533 * (angles['angle_knee'][abs(50 + sign * (self.t%100))])
+        self.jnt_cmd_dict['osl_ankle'] = 0.0174533 * angles['angle_ankle'][self.t%100]
+        self.jnt_cmd_dict['osl_knee'] = -0.0174533 * angles['angle_knee'][self.t%100]
 
         # -------------------------------------- #
 
@@ -43,7 +36,7 @@ def publish_commands(joints, hz):
     for j in joints:
         pub[j] = rospy.Publisher(ns_str + j + cont_str + '/command', Float64, queue_size=10)
 
-    rospy.init_node('oslsim_walker', anonymous=True)
+    rospy.init_node('oslsim_controller', anonymous=True)
     rate = rospy.Rate(hz)
     jntcmds = JointCmds(joints=joints, path=cwd)
     while not rospy.is_shutdown():
@@ -54,7 +47,7 @@ def publish_commands(joints, hz):
 
 if __name__ == "__main__":
     try:
-        joints = ['hip', 'knee', 'ankle', 'osl_hip']
+        joints = ['osl_knee', 'osl_ankle']
         hz = 10
         publish_commands(joints, hz)
     except rospy.ROSInterruptException:

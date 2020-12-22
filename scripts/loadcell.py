@@ -5,9 +5,9 @@ from gazebo_msgs.msg import ContactsState
 
 class Loadcell(object):
     def __init__(self):
-        self.pub_fx = rospy.Publisher('/oslsim/loadcell/fx', Float32, queue_size=10)
-        self.pub_fy = rospy.Publisher('/oslsim/loadcell/fy', Float32, queue_size=10)
-        self.pub_fz = rospy.Publisher('/oslsim/loadcell/fz', Float32, queue_size=10)
+        self.pub_fx = rospy.Publisher('/oslsim/loadcell_fx', Float32, queue_size=10)
+        self.pub_fy = rospy.Publisher('/oslsim/loadcell_fy', Float32, queue_size=10)
+        self.pub_fz = rospy.Publisher('/oslsim/loadcell_fz', Float32, queue_size=10)
 
     def publish_fx(self, val=0.0):
         self.pub_fx.publish(val)
