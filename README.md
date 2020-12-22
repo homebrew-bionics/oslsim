@@ -32,18 +32,18 @@ $ source devel/setup.bash
 
 <img src="./oslsim_imu.gif" width="840">
 
-The Open-source Leg (OSL) model in this package comprises
+The Open-source Leg (OSL) model depicted in this package comprises
 
-* 6 Inertial Measurement units
-* Odometry
-* 2 Load cells
+* 2 Inertial Measurement Units (IMU)
+* a Odometry sensor
+* a Load cell
 
 ## Topics
 <img src="./topics.png" width="840">
 
 ## Load cells
 
-Each foot has a bumper plugin that acts as a load cell. The plugin publishes
+``osl_foot`` has a bumper plugin that acts as a load cell. The plugin publishes
 * Force (fx, fy, fz)
 * Torque (Tx, Ty, Tz)
 * Contact positions
@@ -62,11 +62,11 @@ A python script is included within this package that subscribes to the above sen
 To launch the simulation:
 
 ```
-$ roslaunch oslsim main.launch walk:=true
+$ roslaunch oslsim main.launch control:=true
 ```
 <img src="./oslsim_walk.gif" width="840">
 
-The ``oslsim_walker`` node serves as a container to various control strategies and publishes joint commands to their respective position controllers. 
+The ``oslsim_controller`` node serves as a container to various control strategies and publishes joint commands to their respective position controllers (``osl_knee`` and ``osl_ankle``). 
 
 ## Issues and Feature requests
 Please report bugs or request features [here](https://github.com/homebrew-bionics/oslsim/issues).
