@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import rospy
 import rospkg
-from std_msgs.msg import Float64
+from std_msgs.msg import Float32
 import numpy as np
 import pickle
 
@@ -18,8 +18,8 @@ class JointCmds:
 
         # -------------------------------------- #
 
-        self.jnt_cmd_dict['osl_ankle'] = 0.0174533 * angles['angle_ankle'][self.t%100]
-        self.jnt_cmd_dict['osl_knee'] = -0.0174533 * angles['angle_knee'][self.t%100]
+        self.jnt_cmd_dict['osl_ankle'] = np.sin(self.t)
+        self.jnt_cmd_dict['osl_knee'] = np.sin(self.t)
 
         # -------------------------------------- #
 
@@ -31,10 +31,8 @@ def publish_commands(joints, hz):
     rospack = rospkg.RosPack()
     cwd = rospack.get_path('oslsim')
     pub={}
-    ns_str = '/oslsim/'
-    cont_str = '_position_controller'
     for j in joints:
-        pub[j] = rospy.Publisher(ns_str + j + cont_str + '/command', Float64, queue_size=10)
+        pub[j] = rospy.Publisher('/' + j + '/command', Float32, queue_size=10)
 
     rospy.init_node('oslsim_controller', anonymous=True)
     rate = rospy.Rate(hz)

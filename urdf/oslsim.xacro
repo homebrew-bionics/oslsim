@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<robot name="oslsim">
+<robot name="oslsim" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find gazebo_ros_motors)/xacro/dc_motor.xacro"/>
   <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
       <robotNamespace>/oslsim</robotNamespace>
     </plugin>
   </gazebo>
+
+  <xacro:dc_motor motor_name="osl_ankle" parent_link="osl_shank" child_link="osl_foot">
+    <xacro:property name="params_yaml" value="$(find oslsim)/config/osl_ankle.yaml"/>
+    <origin
+      xyz="-0.00077967 -0.3134 0.026811"
+      rpy="-3.1416 -1.5708 0" />
+    <axis
+      xyz="1 0 0" />      
+  </xacro:dc_motor>
+
+  <xacro:dc_motor motor_name="osl_knee" parent_link="socket" child_link="osl_shank">
+    <xacro:property name="params_yaml" value="$(find oslsim)/config/osl_knee.yaml"/>
+    <origin
+      xyz="-0.0073766 -0.062441 -0.4427"
+      rpy="1.5708 0 0" />
+    <axis
+      xyz="0 0 1" />      
+  </xacro:dc_motor>
 
   <gazebo>
       <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
@@ -372,7 +391,7 @@
     </actuator>
   </transmission>
 
-  <joint name="osl_knee" type="revolute">
+  <!-- <joint name="osl_knee" type="revolute">
     <origin
       xyz="-0.0073766 -0.062441 -0.4427"
       rpy="1.5708 0 0" />
@@ -395,7 +414,7 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
-  </transmission>
+  </transmission> -->
 
   <link name="foot">
     <inertial>
@@ -573,7 +592,7 @@
     </actuator>
   </transmission>
 
-  <joint name="osl_ankle"
+  <!-- <joint name="osl_ankle"
     type="revolute">
     <origin
       xyz="-0.00077967 -0.3134 0.026811"
@@ -597,7 +616,7 @@
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
-  </transmission>
+  </transmission> -->
 
   <link name="foot_heel">
     <inertial>

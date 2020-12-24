@@ -1,5 +1,5 @@
 <launch>
-  <param name="robot_description" textfile="$(find oslsim)/urdf/oslsim.urdf" />  
+  <param name="robot_description" command="$(find xacro)/xacro '$(find oslsim)/urdf/oslsim.xacro'"/>  
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find oslsim)/worlds/main.world"/>
@@ -19,7 +19,7 @@
   </node>
 
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-    output="screen" ns="/oslsim" args="joint_state_controller hip_position_controller osl_hip_position_controller knee_position_controller osl_knee_position_controller ankle_position_controller osl_ankle_position_controller"/>
+    output="screen" ns="/oslsim" args="joint_state_controller hip_position_controller osl_hip_position_controller knee_position_controller ankle_position_controller"/>
 
   <node name="loadcell" pkg="oslsim" type="loadcell.py" output="screen"/>
 
