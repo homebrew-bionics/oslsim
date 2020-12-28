@@ -7,16 +7,16 @@
     </plugin>
   </gazebo>
 
-  <xacro:dc_motor motor_name="osl_ankle" parent_link="osl_shank" child_link="osl_foot">
+  <xacro:dc_motor motor_name="osl_ankle" robot_ns="/oslsim" parent_link="osl_shank" child_link="osl_foot">
     <xacro:property name="params_yaml" value="$(find oslsim)/config/osl_ankle.yaml"/>
     <origin
       xyz="-0.00077967 -0.3134 0.026811"
       rpy="-3.1416 -1.5708 0" />
     <axis
-      xyz="1 0 0" />      
+      xyz="1 0 0" />
   </xacro:dc_motor>
 
-  <xacro:dc_motor motor_name="osl_knee" parent_link="socket" child_link="osl_shank">
+  <xacro:dc_motor motor_name="osl_knee" robot_ns="/oslsim" parent_link="socket" child_link="osl_shank">
     <xacro:property name="params_yaml" value="$(find oslsim)/config/osl_knee.yaml"/>
     <origin
       xyz="-0.0073766 -0.062441 -0.4427"
@@ -105,14 +105,14 @@
         xyz="0 0 0"
         rpy="0 0 0" />
       <mass
-        value="0.1" />
+        value="1.0" />
       <inertia
-        ixx="0.01"
+        ixx="0.001"
         ixy="0"
         ixz="0"
-        iyy="0.01"
+        iyy="0.001"
         iyz="0"
-        izz="0.01" />
+        izz="0.001" />
     </inertial>
   </link>
   
@@ -129,7 +129,7 @@
         xyz="0.0079 0.105 -0.18514"
         rpy="1.5708 0 0" />
       <mass
-        value="0.55797" />
+        value="5.5797" />
       <inertia
         ixx="0.0451"
         ixy="-0.0023863"
@@ -175,7 +175,7 @@
         xyz="0.0149 -0.105 -0.18907"
         rpy="1.5708 0 0" />
       <mass
-        value="0.55993" />
+        value="5.5993" />
       <inertia
         ixx="0.045555"
         ixy="-0.0028683"
@@ -261,7 +261,7 @@
         xyz="0.00071104 -0.14671 -0.059447"
         rpy="0 0 0" />
       <mass
-        value="0.093649" />
+        value="0.53649" />
       <inertia
         ixx="0.00092445"
         ixy="-1.5017E-05"
@@ -307,7 +307,7 @@
         xyz="0.00071137 -0.14671 0.059447"
         rpy="0 0 0" />
       <mass
-        value="0.09365" />
+        value="0.5365" />
       <inertia
         ixx="0.00092446"
         ixy="-1.5017E-05"
@@ -420,9 +420,9 @@
     <inertial>
       <origin
         xyz="0.029606 -0.056108 0.013102"
-        rpy="0 0 0" />
+        rpy="-0.175 0 0" />
       <mass
-        value="0.001" />
+        value="0.15826" />
       <inertia
         ixx="0.00051563"
         ixy="2.5317E-06"
@@ -486,9 +486,9 @@
     <inertial>
       <origin
         xyz="0.029606 0.056108 0.013102"
-        rpy="0 0 0" />
+        rpy="0.175 0 0" />
       <mass
-        value="0.001" />
+        value="0.15826" />
       <inertia
         ixx="0.00051564"
         ixy="-2.531E-06"
