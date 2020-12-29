@@ -12,9 +12,9 @@ electromotive_force_constant: 0.08 # Nm/A
 electric_resistance: 1.0 # Ohm
 electric_inductance: 0.001 # Henry
 # transmission
-gear_ratio: 25.0
-joint_damping: 0.005
-joint_friction: 0.01
+gear_ratio: 1.0
+joint_damping: 0.5
+joint_friction: 0.5
 # shaft encoder
-encoder_ppr: 4096
+encoder_ppr: 1024
 velocity_noise: 0.0

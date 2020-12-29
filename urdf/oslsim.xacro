@@ -11,9 +11,7 @@
     <xacro:property name="params_yaml" value="$(find oslsim)/config/osl_ankle.yaml"/>
     <origin
       xyz="-0.00077967 -0.3134 0.026811"
-      rpy="-3.1416 -1.5708 0" />
-    <axis
-      xyz="1 0 0" />
+      rpy="0 0 0" />
   </xacro:dc_motor>
 
   <xacro:dc_motor motor_name="osl_knee" robot_ns="/oslsim" parent_link="socket" child_link="osl_shank">
@@ -21,8 +19,6 @@
     <origin
       xyz="-0.0073766 -0.062441 -0.4427"
       rpy="1.5708 0 0" />
-    <axis
-      xyz="0 0 1" />      
   </xacro:dc_motor>
 
   <gazebo>
@@ -447,7 +443,7 @@
     </visual>
     <collision>
       <origin
-        xyz="0.029606 -0.065 0.05"
+        xyz="0.029606 -0.065 0.06"
         rpy="0 0 0" />
       <geometry>
         <box size="0.0675 0.025 0.2"/>
@@ -485,8 +481,8 @@
   <link name="osl_foot">
     <inertial>
       <origin
-        xyz="0.029606 0.056108 0.013102"
-        rpy="0.175 0 0" />
+        xyz="0.029606 -0.056108 0.033102"
+        rpy="0.175 -1.5708 0" />
       <mass
         value="0.15826" />
       <inertia
@@ -500,7 +496,7 @@
     <visual>
       <origin
         xyz="0 0 0"
-        rpy="0.175 0 0" />
+        rpy="0.175 -1.5708 -3.1416" />
       <geometry>
         <mesh
           filename="package://oslsim/meshes/osl_foot.dae" />
@@ -513,8 +509,8 @@
     </visual>
     <collision>
       <origin
-        xyz="0.029606 0.065 0.05"
-        rpy="0 0 0" />
+        xyz="0.03 -0.065 0.03"
+        rpy="0 -1.5708 0" />
       <geometry>
         <box size="0.0675 0.025 0.2"/>
       </geometry>
@@ -669,7 +665,7 @@
   <joint name="osl_foot_loadcell_link_joint" type="fixed">
       <parent link="osl_foot"/>
       <child link="osl_foot_loadcell_link"/>
-      <origin xyz="0.03 0.065 0" rpy="0 0 0"/>
+      <origin xyz="-0.03 -0.065 0.03" rpy="0 0 0"/>
   </joint>
 
   <gazebo reference="osl_foot_loadcell_link">

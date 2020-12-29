@@ -12,17 +12,17 @@ class JointCmds:
         self.t = 0.0
         self.path = path + '/data/'
 
-        self.osl_knee_enc = 0.0
-        self.osl_ankle_enc = 0.0
+        self.osl_knee_enc = 0
+        self.osl_ankle_enc = 0
 
         rospy.Subscriber('/oslsim/osl_knee/encoder', Int32, self.osl_knee_enc_cb)
         rospy.Subscriber('/oslsim/osl_ankle/encoder', Int32, self.osl_ankle_enc_cb)
 
     def osl_knee_enc_cb(self, data):
-        self.osl_knee_enc = data
+        self.osl_knee_enc = data.data
 
     def osl_ankle_enc_cb(self, data):
-        self.osl_ankle_enc = data
+        self.osl_ankle_enc = data.data
 
     def update(self, dt):
         with open(self.path + 'angles.pkl', 'rb') as f:
@@ -30,8 +30,12 @@ class JointCmds:
 
         # -------------------------------------- #
 
-        self.jnt_cmd_dict['osl_ankle'] = 0.1 * np.sin(self.t)
-        self.jnt_cmd_dict['osl_knee'] = 0.1 * np.sin(self.t)
+        print((self.osl_knee_enc * (360.0/1024))%360)
+
+        # -------------------------------------- #
+
+        self.jnt_cmd_dict['osl_ankle'] = 1
+        self.jnt_cmd_dict['osl_knee'] = 1
 
         # -------------------------------------- #
 
