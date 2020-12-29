@@ -30,7 +30,7 @@
   </group>    
 
   <!-- call with walk:=true to start walking -->
-  <arg name="control" default="false" />
+  <arg name="control" default="true" />
   <group if="$(arg control)">
     <node name="oslsim_controller" pkg="oslsim" type="controller.py" />
   </group>  
