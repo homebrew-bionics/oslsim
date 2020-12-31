@@ -4,6 +4,7 @@ import rospkg
 from std_msgs.msg import Float32, Int32
 from sensor_msgs.msg import Imu
 from tf.transformations import euler_from_quaternion, quaternion_from_euler
+from pid_tune.msg import PidTune
 import numpy as np
 import pickle
 
@@ -29,13 +30,33 @@ class JointCmds:
         self.errori_ankle = 0.0
         self.preverror_ankle = 0.0
 
+        self.kp_knee = 250 * 0.01
+        self.ki_knee = 30 * 0.01
+        self.kd_knee = 1 * 0.01
+
+        self.kp_ankle = 50 * 0.01
+        self.ki_ankle = 0 * 0.01
+        self.kd_ankle = 0 * 0.01
+
         rospy.Subscriber('/oslsim/imu/osl_shank', Imu, self.osl_knee_pose_cb)
         rospy.Subscriber('/oslsim/imu/osl_foot', Imu, self.osl_ankle_pose_cb)
+        rospy.Subscriber('/oslsim/osl_knee/pid', PidTune, self.osl_knee_pid_cb)
+        rospy.Subscriber('/oslsim/osl_ankle/pid', PidTune, self.osl_ankle_pid_cb)
+    
+    def osl_knee_pid_cb(self,data):
+        self.kp_knee=float(data.Kp)*0.01
+        self.kd_knee=float(data.Kd)*0.01
+        self.ki_knee=float(data.Ki)*0.01
+        
+    def osl_ankle_pid_cb(self,data):
+        self.kp_ankle=float(data.Kp)*0.01
+        self.kd_ankle=float(data.Kd)*0.01
+        self.ki_ankle=float(data.Ki)*0.01
 
     def osl_knee_pose_cb(self, data):
         temp = [data.orientation.x, data.orientation.y, data.orientation.z, data.orientation.w]
         (roll, pitch, yaw) = euler_from_quaternion(temp)
-        self.osl_knee_pose = -1.0 * pitch
+        self.osl_knee_pose = -1.0 * pitch        
 
     def osl_ankle_pose_cb(self, data):
         temp = [data.orientation.x, data.orientation.y, data.orientation.z, data.orientation.w]
@@ -48,16 +69,18 @@ class JointCmds:
 
         # -------------------------------------- #
        
-        self.setpoint_knee = -0.0174533 * angles['angle_knee'][self.t%100]
-        self.setpoint_ankle = -0.0174533 * angles['angle_ankle'][self.t%100]
+        raw_knee = list(angles['angle_knee'].values())
+        raw_ankle = list(angles['angle_ankle'].values())
 
-        kp_knee = 0.8
-        ki_knee = 0.1
-        kd_knee = 0.02
+        n = -15
+        angle_knee = raw_knee[n:]
+        angle_knee.extend(raw_knee[:n])
 
-        kp_ankle = 1.0
-        ki_ankle = 0.0
-        kd_ankle = 0.0
+        angle_ankle = raw_ankle[n:]
+        angle_ankle.extend(raw_ankle[:n])
+
+        self.setpoint_knee = -0.0174533 * angle_knee[int(self.t%100)]
+        self.setpoint_ankle = 0.0174533 * angle_ankle[int(self.t%100)]
 
         self.error_knee = self.setpoint_knee - self.osl_knee_pose
         self.errord_knee = self.error_knee - self.preverror_knee
@@ -69,8 +92,8 @@ class JointCmds:
 
         # -------------------------------------- #
 
-        self.jnt_cmd_dict['osl_ankle'] = (kp_ankle*self.error_ankle) + (kd_ankle*self.errord_ankle) + (ki_ankle*self.errori_ankle)
-        self.jnt_cmd_dict['osl_knee'] = (kp_knee*self.error_knee) + (kd_knee*self.errord_knee) + (ki_knee*self.errori_knee)
+        self.jnt_cmd_dict['osl_ankle'] = (self.kp_ankle*self.error_ankle) + (self.kd_ankle*self.errord_ankle) + (self.ki_ankle*self.errori_ankle)
+        self.jnt_cmd_dict['osl_knee'] = (self.kp_knee*self.error_knee) + (self.kd_knee*self.errord_knee) + (self.ki_knee*self.errori_knee)
 
         # -------------------------------------- #
 

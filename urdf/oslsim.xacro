@@ -65,7 +65,7 @@
       <child link="slider" />
       <axis xyz="1 0 0" />
       <limit effort="1" lower="-10.0" upper="100.0" velocity="1" />
-      <dynamics damping="0.2" friction="0.1"/>
+      <dynamics damping="0.05" friction="0.1"/>
   </joint>
 
   <link name="entity">
@@ -101,7 +101,7 @@
         xyz="0 0 0"
         rpy="0 0 0" />
       <mass
-        value="1.0" />
+        value="0.1" />
       <inertia
         ixx="0.001"
         ixy="0"
@@ -125,7 +125,7 @@
         xyz="0.0079 0.105 -0.18514"
         rpy="1.5708 0 0" />
       <mass
-        value="5.5797" />
+        value="0.55797" />
       <inertia
         ixx="0.0451"
         ixy="-0.0023863"
@@ -171,7 +171,7 @@
         xyz="0.0149 -0.105 -0.18907"
         rpy="1.5708 0 0" />
       <mass
-        value="5.5993" />
+        value="0.55993" />
       <inertia
         ixx="0.045555"
         ixy="-0.0028683"
@@ -257,7 +257,7 @@
         xyz="0.00071104 -0.14671 -0.059447"
         rpy="0 0 0" />
       <mass
-        value="0.53649" />
+        value="0.1" />
       <inertia
         ixx="0.00092445"
         ixy="-1.5017E-05"
@@ -303,7 +303,7 @@
         xyz="0.00071137 -0.14671 0.059447"
         rpy="0 0 0" />
       <mass
-        value="0.5365" />
+        value="0.1" />
       <inertia
         ixx="0.00092446"
         ixy="-1.5017E-05"
@@ -418,7 +418,7 @@
         xyz="0.029606 -0.056108 0.013102"
         rpy="-0.175 0 0" />
       <mass
-        value="0.15826" />
+        value="0.01" />
       <inertia
         ixx="0.00051563"
         ixy="2.5317E-06"
@@ -443,7 +443,7 @@
     </visual>
     <collision>
       <origin
-        xyz="0.029606 -0.065 0.06"
+        xyz="0.029606 -0.065 0.05"
         rpy="0 0 0" />
       <geometry>
         <box size="0.0675 0.025 0.2"/>
@@ -484,7 +484,7 @@
         xyz="0.029606 -0.056108 0.033102"
         rpy="0.175 -1.5708 0" />
       <mass
-        value="0.15826" />
+        value="0.01" />
       <inertia
         ixx="0.00051564"
         ixy="-2.531E-06"
@@ -587,32 +587,6 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>
-
-  <!-- <joint name="osl_ankle"
-    type="revolute">
-    <origin
-      xyz="-0.00077967 -0.3134 0.026811"
-      rpy="-3.1416 -1.5708 0" />
-    <parent
-      link="osl_shank" />
-    <child
-      link="osl_foot" />
-    <axis
-      xyz="1 0 0" />
-    <dynamics damping="0.5" friction="0.5"/>
-    <limit effort="1.0" velocity="100" lower="-1.57" upper="1.57" />      
-  </joint>
-
-  <transmission name="osl_ankle_transmission">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="osl_ankle">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="osl_ankle_motor">
-      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-  </transmission> -->
 
   <link name="foot_heel">
     <inertial>
