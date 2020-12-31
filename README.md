@@ -66,7 +66,9 @@ $ roslaunch oslsim main.launch control:=true
 ```
 <img src="./oslsim_walk.gif" width="840">
 
-The ``oslsim_controller`` node serves as a container to various control strategies and publishes joint commands to their respective position controllers (``osl_knee`` and ``osl_ankle``). 
+The ``oslsim_controller`` node contains an example PID controller that publishes joint commands to the respective motors (``osl_knee`` and ``osl_ankle``). 
+
+<img src="./oslsim_pid.gif" width="840">
 
 ## Issues and Feature requests
 Please report bugs or request features [here](https://github.com/homebrew-bionics/oslsim/issues).
