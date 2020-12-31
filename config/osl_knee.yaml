@@ -5,16 +5,16 @@ publish_current:  true
 publish_motor_joint_state: true
 update_rate: 50.0
 # motor model
-motor_nominal_voltage: 24.0 # Volts
-moment_of_inertia: 0.001 # kgm^2
+motor_nominal_voltage: 50.0 # Volts
+moment_of_inertia: 0.0001 # kgm^2
 armature_damping_ratio: 0.0001 # Nm/(rad/s)
-electromotive_force_constant: 0.08 # Nm/A
-electric_resistance: 1.0 # Ohm
-electric_inductance: 0.001 # Henry
+electromotive_force_constant: 0.056 # Nm/A
+electric_resistance: 0.186 # Ohm
+electric_inductance: 0.000138 # Henry
 # transmission
 gear_ratio: 1.0
-joint_damping: 0.5
-joint_friction: 0.5
+joint_damping: 0.3
+joint_friction: 0.3
 # shaft encoder
 encoder_ppr: 1024
 velocity_noise: 0.0
