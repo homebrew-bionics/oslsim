@@ -36,12 +36,14 @@ $ source devel/setup.bash
 The Open-source Leg (OSL) model depicted in this package comprises
 
 * 2 Inertial Measurement Units (IMU)
-* 2 Rotary encoders
+* 2 Actuators (with Rotary encoders, Motor Joint states, Current, and Voltage data)
 * a Load cell
 
-## Motor configuration
+<img src="./motors.gif" width="840">
 
-Parameters are loaded from **yaml** files (``osl_knee.yaml`` and ``osl_ankle.yaml``). They can also be set through dynamic reconfiguration server,
+## Configuration
+
+Actuator parameters are loaded from **yaml** files (``osl_knee.yaml`` and ``osl_ankle.yaml``). They can also be set through dynamic reconfiguration server,
 ```
 $ rqt
 
