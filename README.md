@@ -20,9 +20,10 @@ $ sudo apt-get install ros-melodic-effort-controllers
 ```
 *Preferred **\<ros-distro\>**: ``melodic``*. If you are new to **ROS**, read more about [Configuring your ROS environment](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment).
 
-Build the package in your catkin workspace.
+Build the package along with [Gazebo ROS motor plugins](https://github.com/nilseuropa/gazebo_ros_motors) in your catkin workspace.
 ```
 $ cd <catkin-workspace>/src
+$ git clone https://github.com/nilseuropa/gazebo_ros_motors
 $ git clone https://github.com/homebrew-bionics/oslsim.git
 $ cd ../
 $ catkin_make
@@ -37,6 +38,16 @@ The Open-source Leg (OSL) model depicted in this package comprises
 * 2 Inertial Measurement Units (IMU)
 * 2 Rotary encoders
 * a Load cell
+
+## Motor configuration
+
+Parameters are loaded from **yaml** files (``osl_knee.yaml`` and ``osl_ankle.yaml``). They can also be set through dynamic reconfiguration server,
+```
+$ rqt
+
+>> Plugins >> Configuration >> Dynamic reconfigure
+```
+<img src="./dyn_reconf.gif" width="840">
 
 ## Topics
 <img src="./topics.png" width="840">
