@@ -35,7 +35,7 @@ $ source devel/setup.bash
 The Open-source Leg (OSL) model depicted in this package comprises
 
 * 2 Inertial Measurement Units (IMU)
-* a Odometry sensor
+* 2 Rotary encoders
 * a Load cell
 
 ## Topics
